@@ -1,0 +1,83 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = "1.4.10"
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
+        }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.0.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "io.realm:realm-gradle-plugin:7.0.0-beta-SNAPSHOT"
+    }
+}
+
+ext {
+    compileSdkVersion = 29
+    minSdkVersion = 21
+    targetSdkVersion = 29
+
+    rxjava3AndroidVerson = '3.0.0'
+    rxjava3Verson = '3.0.3'
+    gsonVersion = '2.8.5'
+
+    archComponentVersion = '1.1.1'
+
+    daggerVersion = '2.15'
+    javaInjectVersion = '1'
+    retrofit2 = '2.8.1'
+    adapterRXVerson = '3.0.0'
+    converterGsonVerson = '2.8.1'
+    dataBindingVersion = '3.1.4'
+    rxBindingVersion = '4.0.0'
+    recyclerviewVersion = '1.1.0'
+    materialVersion = '1.2.1'
+    appcompatVersion = '1.2.0'
+    constraintLayoutVersion = '2.0.1'
+    rxPermissionVersion = '0.9.5@aar'
+    gpsLocationVersion = '15.0.0'
+
+    dependencies = [
+
+            archComponentsExtention: "android.arch.lifecycle:extensions:$archComponentVersion",
+            dagger                 : "com.google.dagger:dagger:$daggerVersion",
+            daggerCompiler         : "com.google.dagger:dagger-compiler:$daggerVersion",
+
+            retrofit2              : "com.squareup.retrofit2:retrofit:$retrofit2",
+            converterGson          : "com.squareup.retrofit2:converter-gson:$converterGsonVerson",
+            adapterRX3             : "com.github.akarnokd:rxjava3-retrofit-adapter:$adapterRXVerson",
+
+            rxjava3Android         : "io.reactivex.rxjava3:rxandroid:$rxjava3AndroidVerson",
+            rxjava3                : "io.reactivex.rxjava3:rxjava:$rxjava3Verson",
+            rxBinding              : "com.jakewharton.rxbinding4:rxbinding:$rxBindingVersion",
+            recyclerview           : "androidx.recyclerview:recyclerview:$recyclerviewVersion",
+            material               : "com.google.android.material:material:$materialVersion",
+            appcompat              : "androidx.appcompat:appcompat:$appcompatVersion",
+            constraintLayout       : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            gson                   : "com.google.code.gson:gson:$gsonVersion",
+            javaxInject            : "javax.inject:javax.inject:${javaInjectVersion}",
+            androidBindingCompiler : "com.android.databinding:compiler:$dataBindingVersion",
+            rxPermission           : "com.tbruyelle.rxpermissions2:rxpermissions:$rxPermissionVersion",
+            gpsLocation            : "com.google.android.gms:play-services-location:$gpsLocationVersion"
+
+    ]
+
+}
+
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
