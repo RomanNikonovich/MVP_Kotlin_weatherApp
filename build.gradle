@@ -39,6 +39,7 @@ ext {
     constraintLayoutVersion = '2.0.1'
     rxPermissionVersion = '0.9.5@aar'
     gpsLocationVersion = '15.0.0'
+    rxjava2AndroidVerson = '2.0.2'
 
     dependencies = [
 
@@ -61,7 +62,8 @@ ext {
             javaxInject            : "javax.inject:javax.inject:${javaInjectVersion}",
             androidBindingCompiler : "com.android.databinding:compiler:$dataBindingVersion",
             rxPermission           : "com.tbruyelle.rxpermissions2:rxpermissions:$rxPermissionVersion",
-            gpsLocation            : "com.google.android.gms:play-services-location:$gpsLocationVersion"
+            gpsLocation            : "com.google.android.gms:play-services-location:$gpsLocationVersion",
+            rxjava2Android         : "io.reactivex.rxjava2:rxandroid:$rxjava2AndroidVerson",
 
     ]
 

@@ -12,7 +12,8 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.weatherapp"
+
+        applicationId "effexor.example.weatherapp"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
@@ -26,6 +27,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
     }
 }
 kapt {
@@ -48,10 +56,12 @@ dependencies {
     implementation dependency.adapterRX3
     implementation dependency.gson
 
-    implementation dependency.archComponentsExtention
+    kapt dependency.archComponentsExtention
     kapt dependency.androidBindingCompiler
     implementation dependency.rxPermission
     implementation dependency.gpsLocation
+
+    implementation dependency.rxjava2Android
 
     api project(path: ':data')
 

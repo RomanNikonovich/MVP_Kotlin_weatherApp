@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">WeatherApp</string>
+    <string name="app_name">Weather</string>
+    <string name="now">Now</string>
+    <string name="date">Date\n</string>
+    <string name="c">\u0020C⁰</string>
+    <string name="error">Ошибка</string>
+    <string name="no_internet">Проверте соединение с интренетом</string>
+    <string name="server_not_available">Сервер временно не доступет.\n Попробуте позже.</string>
+    <string name="permission">There is no permission</string>
 </resources>
