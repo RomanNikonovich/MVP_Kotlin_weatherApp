@@ -32,7 +32,19 @@ class WeatherRepostitoryImp @Inject constructor(val restService: RestService) : 
                     ForecastRealm(
                         it.city.cityName,
                         it.city.country,
-                        "${inf.dt.get(Calendar.DAY_OF_MONTH)}.${inf.dt.get(Calendar.DAY_OF_MONTH) + 1}",
+                        "${
+                            if (inf.dt.get(Calendar.DAY_OF_MONTH) in 1..9) buildString {
+                                append(0); append(
+                                inf.dt.get(Calendar.DAY_OF_MONTH)
+                            )
+                            } else inf.dt.get(Calendar.DAY_OF_MONTH)
+                        }.${
+                            if ((inf.dt.get(Calendar.MONTH) + 1) in 1..9) buildString {
+                                append(
+                                    0
+                                ); append(inf.dt.get(Calendar.MONTH) + 1)
+                            } else inf.dt.get(Calendar.MONTH) + 1
+                        }",
                         inf.temp.day.toInt().toString(),
                         inf.temp.night.toInt().toString(),
                         inf.weather[0].description,

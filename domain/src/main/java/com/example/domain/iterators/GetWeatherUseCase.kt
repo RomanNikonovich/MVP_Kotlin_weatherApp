@@ -12,7 +12,7 @@ import javax.inject.Inject
  */
 class GetWeatherUseCase @Inject constructor(
     postExecutionThread: PostExecutionThread,
-    val repository: WeatherRepository
+    private val repository: WeatherRepository
 ) : BaseUseCase(postExecutionThread) {
 
     fun getWeather(

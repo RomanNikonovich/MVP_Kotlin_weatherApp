@@ -21,20 +21,20 @@ import javax.inject.Inject
 const val ID = "c0c4a4b4047b97ebc5948ac9c48c0559"
 
 class PresenterMVP : BasePresenter<BaseView, Router>() {
-    val dateNow: ObservableField<String> = ObservableField()
-    val country: ObservableField<String> = ObservableField()
-    val city: ObservableField<String> = ObservableField()
-    val tempNow: ObservableField<String> = ObservableField()
-    val iconNow: ObservableField<String> = ObservableField()
-    val date_1: ObservableField<String> = ObservableField()
-    val icon_1: ObservableField<String> = ObservableField()
-    val temp_1: ObservableField<String> = ObservableField()
-    val date_2: ObservableField<String> = ObservableField()
-    val icon_2: ObservableField<String> = ObservableField()
-    val temp_2: ObservableField<String> = ObservableField()
-    val date_3: ObservableField<String> = ObservableField()
-    val icon_3: ObservableField<String> = ObservableField()
-    val temp_3: ObservableField<String> = ObservableField()
+    var dateNow: ObservableField<String> = ObservableField()
+    var country: ObservableField<String> = ObservableField()
+    var city: ObservableField<String> = ObservableField()
+    var tempNow: ObservableField<String> = ObservableField()
+    var iconNow: ObservableField<String> = ObservableField()
+    var date_1: ObservableField<String> = ObservableField()
+    var icon_1: ObservableField<String> = ObservableField()
+    var temp_1: ObservableField<String> = ObservableField()
+    var date_2: ObservableField<String> = ObservableField()
+    var icon_2: ObservableField<String> = ObservableField()
+    var temp_2: ObservableField<String> = ObservableField()
+    var date_3: ObservableField<String> = ObservableField()
+    var icon_3: ObservableField<String> = ObservableField()
+    var temp_3: ObservableField<String> = ObservableField()
 
 
     @Inject
@@ -61,7 +61,7 @@ class PresenterMVP : BasePresenter<BaseView, Router>() {
     private fun getLocation() {
         providerClient
             .lastLocation
-            ?.addOnSuccessListener { getWeather(it.latitude, it.longitude) }
+            .addOnSuccessListener {if (it!=null) getWeather(it.latitude, it.longitude) }
     }
 
     /**

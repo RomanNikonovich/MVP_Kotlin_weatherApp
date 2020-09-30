@@ -11,11 +11,7 @@ abstract class BaseUseCase(
 ) {
     protected val postExecutionThreadScheduler = postExecutionThread.getScheduler()
 
-    protected var threadExecutionScheduler = Schedulers.io()
-
-    init {
-        if (threadExecution != null)
-            threadExecutionScheduler = Schedulers.from(threadExecution)
-    }
+    protected var threadExecutionScheduler: Scheduler =
+        if (threadExecution == null) Schedulers.io() else Schedulers.from(threadExecution)
 
 }
