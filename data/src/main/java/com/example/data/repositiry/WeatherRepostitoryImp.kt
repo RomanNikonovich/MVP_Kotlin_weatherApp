@@ -112,13 +112,14 @@ class WeatherRepostitoryImp @Inject constructor(val restService: RestService) : 
         } finally {
             realm?.close()
         }
-        val forecastEnt: ForecastEnt = ForecastEnt(
-            forecastList[0].city,
-            forecastList[0].country,
-            forecastList.flatMap { it.list })
 
         return Flowable.create(
-            FlowableOnSubscribe { emitter -> emitter.onNext(forecastEnt); emitter.onComplete() },
+            FlowableOnSubscribe { emitter ->
+                val forecastEnt: ForecastEnt = ForecastEnt(
+                    forecastList[0].city,
+                    forecastList[0].country,
+                    forecastList.flatMap { it.list }); emitter.onNext(forecastEnt); emitter.onComplete()
+            },
             BackpressureStrategy.BUFFER
         )
     }

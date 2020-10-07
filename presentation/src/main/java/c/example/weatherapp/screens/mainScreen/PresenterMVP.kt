@@ -21,20 +21,20 @@ import javax.inject.Inject
 const val ID = "c0c4a4b4047b97ebc5948ac9c48c0559"
 
 class PresenterMVP : BasePresenter<BaseView, Router>() {
-    var dateNow: ObservableField<String> = ObservableField()
-    var country: ObservableField<String> = ObservableField()
-    var city: ObservableField<String> = ObservableField()
-    var tempNow: ObservableField<String> = ObservableField()
-    var iconNow: ObservableField<String> = ObservableField()
-    var date_1: ObservableField<String> = ObservableField()
-    var icon_1: ObservableField<String> = ObservableField()
-    var temp_1: ObservableField<String> = ObservableField()
-    var date_2: ObservableField<String> = ObservableField()
-    var icon_2: ObservableField<String> = ObservableField()
-    var temp_2: ObservableField<String> = ObservableField()
-    var date_3: ObservableField<String> = ObservableField()
-    var icon_3: ObservableField<String> = ObservableField()
-    var temp_3: ObservableField<String> = ObservableField()
+    var dateNow: ObservableField<String> = ObservableField("")
+    var country: ObservableField<String> = ObservableField("")
+    var city: ObservableField<String> = ObservableField("")
+    var tempNow: ObservableField<String> = ObservableField("")
+    var iconNow: ObservableField<String> = ObservableField("")
+    var date_1: ObservableField<String> = ObservableField("")
+    var icon_1: ObservableField<String> = ObservableField("")
+    var temp_1: ObservableField<String> = ObservableField("")
+    var date_2: ObservableField<String> = ObservableField("")
+    var icon_2: ObservableField<String> = ObservableField("")
+    var temp_2: ObservableField<String> = ObservableField("")
+    var date_3: ObservableField<String> = ObservableField("")
+    var icon_3: ObservableField<String> = ObservableField("")
+    var temp_3: ObservableField<String> = ObservableField("")
 
 
     @Inject
@@ -72,6 +72,7 @@ class PresenterMVP : BasePresenter<BaseView, Router>() {
             weatherUseCase
                 .getWeather(lat, lon, ID)
                 .subscribe({
+                    setData(it)
                     setData(it)
                 }, {
                     view?.showError(error(it))
@@ -125,6 +126,6 @@ class PresenterMVP : BasePresenter<BaseView, Router>() {
     }
 
     private fun loadDataDB() {
-        compositeDisposable.add(dbUseCase.getWeatherDB().subscribe { setData(it as ForecastEnt) })
+        compositeDisposable.add(dbUseCase.getWeatherDB().subscribe( { setData(it as ForecastEnt) },{}))
     }
 }
